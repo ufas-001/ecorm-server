@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 
-const connectionStr = "mongodb+srv://abdul:Kaosarat95@cluster0.cwh7nbp.mongodb.net/";
+const connectionStr = process.env.MONGO_URL;
 
 
 mongoose.connect(connectionStr, {useNewUrlparser: true})
