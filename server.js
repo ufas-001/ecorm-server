@@ -28,6 +28,7 @@ app.use('/orders', orderRoutes);
 app.use('/images', imageRoutes);
 
 
+// Make payment with stripe
 app.post('/create-payment', async(req, res)=> {
   const {amount} = req.body;
   console.log(amount);
