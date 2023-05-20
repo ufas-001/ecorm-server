@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const http = require('http');
 require('dotenv').config();
-const stripe = require('stripe')(process.env.STRIPE_SECRET);
+const stripe = require('stripe')("sk_test_51N7J5xEIAKFbGx0oXvlGiVuOF78VSFD39C97ITjaSb72sydxPheVtVTYCi7DKu39fW2ffBKi97DXAkDdCSgAwHd000iq52VhSz");
 require('./connection')
 const server = http.createServer(app);
 const {Server} = require('socket.io');
@@ -39,14 +39,14 @@ app.post('/create-payment', async(req, res)=> {
     });
     res.status(200).json(paymentIntent)
   } catch (e) {
-    console.log(e.message);
-    res.status(400).json(e.message);
+    console.log(e);
+    res.status(400).json(e);
    }
 })
 
 
-server.listen(8080, ()=> {
-  console.log('server running at port', 8080)
+server.listen(8000, ()=> {
+  console.log('server running at port', 8000)
 })
 
 app.set('socketio', io);
