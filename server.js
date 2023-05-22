@@ -29,21 +29,21 @@ app.use('/images', imageRoutes);
 
 
 // Make payment with stripe
-// app.post('/create-payment', async(req, res)=> {
-//   const {amount} = req.body;
-//   console.log(amount);
-//   try {
-//     const paymentIntent = await stripe.paymentIntents.create({
-//       amount,
-//       currency: 'usd',
-//       payment_method_types: ['card']
-//     });
-//     res.status(200).json(paymentIntent)
-//   } catch (e) {
-//     console.log(e);
-//     res.status(400).json(e);
-
-// })
+app.post('/create-payment', async(req, res)=> {
+  const {amount} = req.body;
+  console.log(amount);
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency: 'usd',
+      payment_method_types: ['card']
+    });
+    res.status(200).json(paymentIntent)
+  } catch (e) {
+    console.log(e);
+    res.status(400).json(e);
+  }
+})
 
 
 server.listen(8000, ()=> {
